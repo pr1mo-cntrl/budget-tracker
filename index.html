@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Daily Finances</title>
+    <title>Joint Savings Tracker</title>
     <!-- Import Appwrite JS Library -->
     <script src="https://cdn.jsdelivr.net/npm/appwrite@16.0.2"></script>
     <style>
@@ -11,85 +11,105 @@
             background-color: #121212;
             color: #ffffff;
             font-family: 'Courier New', Courier, monospace;
-            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 40px 20px;
             margin: 0;
+            text-align: center;
         }
+
         h2 {
             font-size: 24px;
-            margin-bottom: 50px;
+            margin-bottom: 10px;
             letter-spacing: 1px;
         }
-        .form-group {
-            margin-bottom: 30px;
-            font-size: 16px;
+
+        .subtitle {
+            color: #aaaaaa;
+            font-size: 14px;
+            margin-bottom: 50px;
         }
-        .form-group > label {
-            display: block;
-            margin-bottom: 15px;
+
+        /* Circular Graph Styling */
+        .graph-container {
+            position: relative;
+            width: 250px;
+            height: 250px;
+            border-radius: 50%;
+            /* The background creates the progress ring - default to 0% */
+            background: conic-gradient(#ffffff 0%, #333333 0%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 50px;
+            transition: background 0.5s ease-in-out;
         }
-        .radio-group {
-            margin-left: 40px;
-            margin-bottom: 30px;
+
+        .inner-circle {
+            width: 240px;
+            height: 240px;
+            border-radius: 50%;
+            background-color: #121212;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
         }
-        .radio-group label {
-            display: block;
-            margin-bottom: 10px;
-            cursor: pointer;
+
+        .amount {
+            font-size: 36px;
+            font-weight: bold;
+            margin: 0;
         }
-        input[type="date"], input[type="number"] {
-            background: transparent;
-            border: none;
-            border-bottom: 1px solid #555;
-            color: #fff;
-            font-family: 'Courier New', Courier, monospace;
-            font-size: 16px;
-            padding: 5px;
-            width: 200px;
-            margin-left: 40px;
-            outline: none;
+
+        .cycle-text {
+            font-size: 12px;
+            color: #888888;
+            margin-top: 15px;
+            max-width: 160px;
+            line-height: 1.5;
         }
+
+        /* Action Button */
         button {
             background: #ffffff;
             color: #000000;
             border: none;
-            padding: 10px 20px;
+            padding: 15px 25px;
             font-family: 'Courier New', Courier, monospace;
+            font-size: 16px;
             font-weight: bold;
             cursor: pointer;
-            margin-top: 20px;
+            transition: background 0.2s;
         }
+
         button:hover { background: #cccccc; }
-        #message { margin-top: 20px; color: #4caf50; }
+        button:active { transform: scale(0.98); }
+
+        #message {
+            margin-top: 25px;
+            height: 20px;
+            font-size: 14px;
+            color: #4caf50;
+        }
     </style>
 </head>
 <body>
 
-    <h2>Log Daily Finances</h2>
+    <h2 id="greeting">Welcome</h2>
+    <div class="subtitle">Joint Savings Dashboard</div>
 
-    <div class="form-group">
-        <label>Select Profile:</label>
-        <div class="radio-group">
-            <label><input type="radio" name="profile" value="Jan" required> Jan</label>
-            <label><input type="radio" name="profile" value="Lisky"> Lisky</label>
+    <!-- The Circular Graph -->
+    <div class="graph-container" id="progress-circle">
+        <div class="inner-circle">
+            <p class="amount" id="savings-display">₱0</p>
+            <p class="cycle-text">Savings cycle resets every 21st of the month</p>
         </div>
     </div>
 
-    <div class="form-group">
-        <label>Date:</label>
-        <input type="date" id="entry_date" required>
-    </div>
-
-    <div class="form-group">
-        <label>Total Spent (₱):</label>
-        <input type="number" id="amount_spent" step="0.01" required>
-    </div>
-
-    <div class="form-group">
-        <label>Amount Saved (₱):</label>
-        <input type="number" id="amount_saved" step="0.01" required>
-    </div>
-
-    <button onclick="submitData()">Save Log</button>
+    <!-- The 20 Peso Action Button -->
+    <button id="save-btn" onclick="addJointSavings()">Put ₱20 in joint savings now</button>
 
     <div id="message"></div>
 
