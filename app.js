@@ -15,7 +15,7 @@ const client = new Client();
 
 client
     .setEndpoint('https://cloud.appwrite.io/v1') 
-    .setProject('6a8439a3003002a2a730'); // Your Project ID
+    .setProject('sgp-6a8439a3003002a2a730'); // Your Project ID
 
 const databases = new Databases(client);
 
