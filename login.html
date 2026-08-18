@@ -5,9 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Select Profile</title>
     <style>
-        /* Clean, modern mobile-first styling */
+        /* Dark mode styling */
         body {
-            background-color: #f4f7f6; /* Very light grey/blue from the new UI */
+            background-color: #121212; /* Deep black/grey background */
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
             display: flex;
             flex-direction: column;
@@ -15,7 +15,7 @@
             justify-content: center;
             height: 100vh;
             margin: 0;
-            color: #1a1a1a;
+            color: #ffffff; /* White text */
         }
 
         h1 {
@@ -27,21 +27,21 @@
 
         .profile-container {
             display: flex;
-            gap: 25px; /* Spacing between the two cards */
+            gap: 25px; 
         }
 
         /* Profile Card Styling */
         .profile-card {
-            background: #ffffff;
+            background: #1e1e1e; /* Slightly lighter dark card for contrast */
             border-radius: 24px;
             padding: 30px 20px;
             width: 110px;
             text-align: center;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.04);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.5); /* Heavier shadow for dark mode depth */
             cursor: pointer;
             transition: all 0.2s ease-in-out;
             border: 2px solid transparent;
-            -webkit-tap-highlight-color: transparent; /* Removes blue tap flash on iPhone */
+            -webkit-tap-highlight-color: transparent; 
         }
 
         .profile-card:active {
@@ -51,12 +51,12 @@
         /* Highlight effects for selection */
         .profile-card.jan:hover, .profile-card.jan:active {
             border-color: #10b981; /* Green accent */
-            box-shadow: 0 15px 35px rgba(16, 185, 129, 0.15);
+            box-shadow: 0 15px 35px rgba(16, 185, 129, 0.2);
         }
 
         .profile-card.lisky:hover, .profile-card.lisky:active {
             border-color: #8b5cf6; /* Purple accent */
-            box-shadow: 0 15px 35px rgba(139, 92, 246, 0.15);
+            box-shadow: 0 15px 35px rgba(139, 92, 246, 0.2);
         }
 
         /* Avatar Circles */
@@ -80,6 +80,7 @@
             margin: 0;
             font-size: 18px;
             font-weight: 600;
+            color: #ffffff;
         }
     </style>
 </head>
@@ -91,7 +92,7 @@
         <!-- Jan's Profile -->
         <div class="profile-card jan" onclick="login('Jan')">
             <div class="avatar jan">J</div>
-            <h2>Jan</h2>
+            <h2>Kaisser</h2>
         </div>
 
         <!-- Lisky's Profile -->
