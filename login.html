@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Select Profile</title>
+    <style>
+        /* Clean, modern mobile-first styling */
+        body {
+            background-color: #f4f7f6; /* Very light grey/blue from the new UI */
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            color: #1a1a1a;
+        }
+
+        h1 {
+            font-size: 22px;
+            font-weight: 600;
+            margin-bottom: 40px;
+            letter-spacing: 0.5px;
+        }
+
+        .profile-container {
+            display: flex;
+            gap: 25px; /* Spacing between the two cards */
+        }
+
+        /* Profile Card Styling */
+        .profile-card {
+            background: #ffffff;
+            border-radius: 24px;
+            padding: 30px 20px;
+            width: 110px;
+            text-align: center;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.04);
+            cursor: pointer;
+            transition: all 0.2s ease-in-out;
+            border: 2px solid transparent;
+            -webkit-tap-highlight-color: transparent; /* Removes blue tap flash on iPhone */
+        }
+
+        .profile-card:active {
+            transform: scale(0.95);
+        }
+
+        /* Highlight effects for selection */
+        .profile-card.jan:hover, .profile-card.jan:active {
+            border-color: #10b981; /* Green accent */
+            box-shadow: 0 15px 35px rgba(16, 185, 129, 0.15);
+        }
+
+        .profile-card.lisky:hover, .profile-card.lisky:active {
+            border-color: #8b5cf6; /* Purple accent */
+            box-shadow: 0 15px 35px rgba(139, 92, 246, 0.15);
+        }
+
+        /* Avatar Circles */
+        .avatar {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            font-weight: 700;
+            color: #ffffff;
+            margin: 0 auto 15px auto;
+        }
+
+        .avatar.jan { background-color: #10b981; }
+        .avatar.lisky { background-color: #8b5cf6; }
+
+        h2 {
+            margin: 0;
+            font-size: 18px;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Who is logging today?</h1>
+
+    <div class="profile-container">
+        <!-- Jan's Profile -->
+        <div class="profile-card jan" onclick="login('Jan')">
+            <div class="avatar jan">J</div>
+            <h2>Jan</h2>
+        </div>
+
+        <!-- Lisky's Profile -->
+        <div class="profile-card lisky" onclick="login('Lisky')">
+            <div class="avatar lisky">L</div>
+            <h2>Lisky</h2>
+        </div>
+    </div>
+
+    <script>
+        function login(username) {
+            // Save the selected user to the browser's local storage
+            localStorage.setItem('activeUser', username);
+            
+            // Redirect them to the main tracker page
+            window.location.href = 'index.html'; 
+        }
+    </script>
+
+</body>
+</html>

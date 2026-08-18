@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daily Finances</title>
+    <!-- Import Appwrite JS Library -->
+    <script src="https://cdn.jsdelivr.net/npm/appwrite@16.0.2"></script>
+    <style>
+        body {
+            background-color: #121212;
+            color: #ffffff;
+            font-family: 'Courier New', Courier, monospace;
+            padding: 40px;
+            margin: 0;
+        }
+        h2 {
+            font-size: 24px;
+            margin-bottom: 50px;
+            letter-spacing: 1px;
+        }
+        .form-group {
+            margin-bottom: 30px;
+            font-size: 16px;
+        }
+        .form-group > label {
+            display: block;
+            margin-bottom: 15px;
+        }
+        .radio-group {
+            margin-left: 40px;
+            margin-bottom: 30px;
+        }
+        .radio-group label {
+            display: block;
+            margin-bottom: 10px;
+            cursor: pointer;
+        }
+        input[type="date"], input[type="number"] {
+            background: transparent;
+            border: none;
+            border-bottom: 1px solid #555;
+            color: #fff;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 16px;
+            padding: 5px;
+            width: 200px;
+            margin-left: 40px;
+            outline: none;
+        }
+        button {
+            background: #ffffff;
+            color: #000000;
+            border: none;
+            padding: 10px 20px;
+            font-family: 'Courier New', Courier, monospace;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+        button:hover { background: #cccccc; }
+        #message { margin-top: 20px; color: #4caf50; }
+    </style>
+</head>
+<body>
+
+    <h2>Log Daily Finances</h2>
+
+    <div class="form-group">
+        <label>Select Profile:</label>
+        <div class="radio-group">
+            <label><input type="radio" name="profile" value="Jan" required> Jan</label>
+            <label><input type="radio" name="profile" value="Lisky"> Lisky</label>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label>Date:</label>
+        <input type="date" id="entry_date" required>
+    </div>
+
+    <div class="form-group">
+        <label>Total Spent (₱):</label>
+        <input type="number" id="amount_spent" step="0.01" required>
+    </div>
+
+    <div class="form-group">
+        <label>Amount Saved (₱):</label>
+        <input type="number" id="amount_saved" step="0.01" required>
+    </div>
+
+    <button onclick="submitData()">Save Log</button>
+
+    <div id="message"></div>
+
+    <script src="app.js"></script>
+</body>
+</html>
